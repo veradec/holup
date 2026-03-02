@@ -9,7 +9,7 @@ Usage:
  * Hold makes a countdown for the number of Minutes that you specified as the last argument
  * Timer Just Counts Up Infinitely
 
-[Latest Screenshot](assets/ss/worker.png)
+![Latest Screenshot](assets/ss/worker.png)
 
 Roadmap:
 	[] The frame mustn't overflow after hitting 00:00 rather hold there

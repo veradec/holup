@@ -12,6 +12,6 @@ Usage:
 ![Latest Screenshot](assets/ss/worker.png)
 
 Roadmap:
-	[] The frame mustn't overflow after hitting 00:00 rather hold there
-	[] Some Music playing in the background.
-	[] Text Configuration from argument.
+	[] The frame mustn't overflow after hitting 00:00 rather hold there  
+	[] Some Music playing in the background.  
+	[] Text Configuration from argument.  

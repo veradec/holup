@@ -7,8 +7,8 @@
 const unsigned int x = 1920;
 const unsigned int y = 1080;
 Color bg = {55, 53, 62, 255};
-Color fg = {211,218, 217, 200};
-void DrawCountDown(unsigned int sec){
+Color fg = {211,218, 217, 2};
+void DrawCountDown( int sec){
   Font RetroF = LoadFontEx("assets/fonts/Transcity DEMO.otf", 200, 0, 0);
   Font DreamerTM = LoadFontEx("assets/fonts/DreamerTM-Regular.ttf",  120, 0, 0);
   while(!WindowShouldClose()){
@@ -39,7 +39,7 @@ void DrawCountDown(unsigned int sec){
 void DrawTimer(){
   Font RetroF = LoadFontEx("assets/fonts/Transcity DEMO.otf", 200, 0, 0);
   Font DreamerTM = LoadFontEx("assets/fonts/DreamerTM-Regular.ttf",  120, 0, 0);
-  unsigned int sec =0;
+  int sec =0;
   while(!WindowShouldClose()){
     BeginDrawing();
 

@@ -37,13 +37,27 @@ void DrawCountDown(unsigned int sec){
 }
 
 void DrawTimer(){
+  Font RetroF = LoadFontEx("assets/fonts/Transcity DEMO.otf", 200, 0, 0);
+  Font DreamerTM = LoadFontEx("assets/fonts/DreamerTM-Regular.ttf",  120, 0, 0);
   unsigned int sec =0;
   while(!WindowShouldClose()){
     BeginDrawing();
     ClearBackground(BLACK);
     char buf[99];
     sprintf(buf, "%02d:%02d", sec/60, sec%60);
-    DrawText(buf, x/2.5, y/3, 120, RAYWHITE);
+    const char* dreamerText = buf; 
+    Vector2 dreamerSize = MeasureTextEx(DreamerTM, dreamerText, (float)DreamerTM.baseSize, 20);
+    DrawTextEx(DreamerTM, dreamerText, 
+	       (Vector2){ (float)(x/2 - dreamerSize.x/2), (float)(y/2 - 300) }, 
+	       (float)DreamerTM.baseSize, 20, MAROON);
+    
+  const char* retroText = "Be Right Back";
+  Vector2 retroSize = MeasureTextEx(RetroF, retroText, (float)RetroF.baseSize, 2);
+  DrawTextEx(RetroF, retroText, 
+	     (Vector2){ (float)(x/2 - retroSize.x/2), (float)(y/2 - 100) }, 
+	     (float)RetroF.baseSize, 2, MAROON);
+  
+
     sleep(1);
     sec++;
     EndDrawing();

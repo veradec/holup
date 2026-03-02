@@ -9,14 +9,15 @@ const unsigned int y = 1080;
 
 
 void DrawCountDown(unsigned int sec){
-Font DreamerTM = LoadFont("assets/fonts/DreamerTM-Regular.ttf");
+  Font RetroF = LoadFontEx("assets/fonts/Transcity DEMO.otf", 90, 0, 0);
+  Font DreamerTM = LoadFontEx("assets/fonts/DreamerTM-Regular.ttf",  120, 0, 0);
   while(!WindowShouldClose()){
     BeginDrawing();
     ClearBackground(BLACK);
     char buf[99];
     sprintf(buf, "%02d:%02d", sec/60, sec%60);
-    DrawTextEx(DreamerTM, buf, (Vector2){ 100.0f, 100.0f}, 100.0f,30,MAROON );
-
+    DrawTextEx(DreamerTM, buf, (Vector2){ (float)(x/2), (float)(y/2)}, (float)DreamerTM.baseSize,20,MAROON );
+    DrawTextEx(RetroF, "Be Right Back", (Vector2){ (float)(x/2 + 20), (float)(y/2 + 30)}, (float)RetroF.baseSize,2,MAROON );
     sleep(1);
     sec--;
     EndDrawing();

@@ -7,13 +7,23 @@
 const unsigned int x = 1920;
 const unsigned int y = 1080;
 Color bg = {55, 53, 62, 255};
-Color fg = {211,218, 217, 2};
-void DrawCountDown( int sec){
+Color fg = {211,218, 217, 220};
+
+
+void DrawCountDown(int sec){
   Font RetroF = LoadFontEx("assets/fonts/Transcity DEMO.otf", 200, 0, 0);
   Font DreamerTM = LoadFontEx("assets/fonts/DreamerTM-Regular.ttf",  120, 0, 0);
+  int frames = 0;
+  /* LOADS ALL IMAGES INTO GIFS */
+  Image  anatroll_name =    LoadImageAnim("assets/gifs/anatroll.gif", &frames);  
+  Texture2D anatroll = LoadTextureFromImage(anatroll_name);
+
+  
   while(!WindowShouldClose()){
     BeginDrawing();
+    DrawTexture(anatroll, 20,120, WHITE);    
     ClearBackground(bg);
+
     char buf[99];
     sprintf(buf, "%02d:%02d", sec/60, sec%60);
 

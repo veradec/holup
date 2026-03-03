@@ -11,7 +11,12 @@ Usage:
 
 ![Latest Screenshot](assets/ss/worker.png)
 
-Roadmap:
+Roadmap:  
 	[] The frame mustn't overflow after hitting 00:00 rather hold there  
 	[] Some Music playing in the background.  
 	[] Text Configuration from argument.  
+
+
+Credits:  
+GIFS are from GIPHY  
+Audio is from [Cutecore Playlist](https://www.youtube.com/watch?v=4LYk7ayBYFM)

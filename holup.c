@@ -7,6 +7,7 @@
 #define MAX_FRAME_DELAY 20
 #define MIN_FRAME_DELAY 1
 
+/* Constants  */
 const unsigned int x = 1920;
 const unsigned int y = 1080;
 Color bg = {55, 53, 62, 255};
@@ -29,13 +30,22 @@ void DrawScreen(int sec) {
   PlayMusicStream(song);
 
   /* =============================================================== */
-
+  float timer = 0.0f;
   /* =================== GIFS======================================= */
+  /* Constants needed for GIF Anim */
+  int animFrame = 0;
+  unsigned int nextFrameDataOffset = 0;
+  int currentFrame = 0;
+  int frameDelay = 0;
+  int frameCounter = 0;
+
+  // Loads all The GIFS as Images
+  Image img_cute = LoadImageAnim("assets/gifs/anatroll.gif", &animFrame);
+  Texture2D tex_cute = LoadTextureFromImage(img_cute);
 
   /* =============================================================== */
 
-  float timer = 0.0f;
-  /* Start Rendering the Timer */
+  /* sec must be -1 if Timer wants to run */
   if (sec == -1) {
     sec = 0;
 
@@ -44,12 +54,15 @@ void DrawScreen(int sec) {
       BeginDrawing();
       ClearBackground(bg);
       UpdateMusicStream(song);
+
       char buf[99];
       sprintf(buf, "%02d:%02d", sec / 60, sec % 60);
 
       const char *dreamerText = buf;
       Vector2 dreamerSize =
           MeasureTextEx(DreamerTM, dreamerText, (float)DreamerTM.baseSize, 20);
+
+      /* Draw Text */
       DrawTextEx(
           DreamerTM, dreamerText,
           (Vector2){(float)(x / 2 - dreamerSize.x / 2), (float)(y / 2 - 300)},
@@ -59,6 +72,20 @@ void DrawScreen(int sec) {
           (Vector2){(float)(x / 2 - retroSize.x / 2), (float)(y / 2 - 100)},
           (float)RetroF.baseSize, 2, fg);
 
+      /* Draw GIF */
+
+      frameCounter++;
+      if (frameCounter >= frameDelay) {
+        currentFrame++;
+        if (currentFrame >= animFrame)
+          currentFrame = 0;
+
+        nextFrameDataOffset =
+            tex_cute.width * tex_cute.height * 4 * currentFrame;
+        UpdateTexture(tex_cute,
+                      ((unsigned char *)img_cute.data) + nextFrameDataOffset);
+        frameCounter = 0;
+      }
       /* Increase sec when timer increases  */
       timer += GetFrameTime();
       if (timer >= 1.0f) {
